@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano nutrición Brasileño</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FFFFFF;
+            color: #1A1A1A;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ========== SEÇÃO 1 — BARRA DE PROGRESSO ========== */
+        .progress-bar-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #FFFFFF;
+            z-index: 1000;
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+        }
+
+        .progress-text {
+            text-align: center;
+            font-size: 13px;
+            color: #1A1A1A;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .progress-track-wrapper {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .progress-percent-label {
+            position: absolute;
+            top: 14px;
+            left: 82%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            font-weight: 700;
+            color: #E91E8C;
+            background: #FFF0F7;
+            border: 1px solid #E91E8C;
+            border-radius: 4px;
+            padding: 1px 5px;
+            line-height: 1.4;
+        }
+
+        .progress-percent-label::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 4px 4px;
+            border-style: solid;
+            border-color: transparent transparent #E91E8C;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 6px;
+            background: #F0F0F0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 82%;
+            height: 100%;
+            background: linear-gradient(90deg, #E91E8C, #FF6EC7);
+            border-radius: 3px;
+            transition: width 0.6s ease;
+        }
+
+        /* ========== SEÇÃO 2 — PATTERN INTERRUPT ========== */
+        .pattern-interrupt {
+            margin-top: 70px;
+            background: #FFF0F7;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .pattern-interrupt .icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .pattern-interrupt h2 {
+            color: #E91E8C;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .pattern-interrupt p {
+            font-size: 16px;
+            color: #333;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        /* ========== SEÇÃO 3 — HEADLINE PRINCIPAL ========== */
+        .headline-section {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .tag-pill {
+            display: inline-block;
+            background: #E91E8C;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .headline-section h1 {
+            font-size: 30px;
+            font-weight: 800;
+            color: #1A1A1A;
+            line-height: 1.3;
+            max-width: 700px;
+            margin: 0 auto 16px;
+        }
+
+        .headline-section .subtitle {
+            font-size: 16px;
+            color: #555;
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ========== SEÇÃO 4 — HERO + PRODUTO ========== */
+        .hero-product {
+            padding: 40px 20px;
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .hero-mockup {
+            flex: 0 0 280px;
+            height: 360px;
+            background: linear-gradient(135deg, #E91E8C, #FF6EC7, #FFB6E1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 1.4;
+            box-shadow: 0 20px 50px rgba(233, 30, 140, 0.25);
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-mockup::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-mockup span {
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .hero-features {
+            flex: 1;
+        }
+
+        .hero-features ul {
+            list-style: none;
+        }
+
+        .hero-features li {
+            font-size: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #F5F5F5;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .hero-features li:last-child {
+            border-bottom: none;
+        }
+
+        .hero-features li .emoji {
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* ========== SEÇÃO 5 — TIMER ========== */
+        .timer-section {
+            background: linear-gradient(135deg, #E91E8C, #D1177A);
+            padding: 30px 20px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .timer-label {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .timer-display {
+            font-family: 'Poppins', sans-serif;
+            font-size: 52px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+        }
+
+        .timer-sub {
+            font-size: 13px;
+            opacity: 0.85;
+        }
+
+        .timer-expired {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        /* ========== SEÇÃO 6 — DEPOIMENTOS ========== */
+        .testimonials-section {
+            padding: 50px 20px;
+        }
+
+        .testimonials-section h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 36px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #1A1A1A;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: #FFFFFF;
+            border: 1px solid #FFD6EC;
+            border-radius: 14px;
+            padding: 24px 20px;
+            box-shadow: 0 4px 16px rgba(233, 30, 140, 0.06);
+            transition: transform 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .stars {
+            color: #FBBF24;
+            font-size: 16px;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #E91E8C;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .testimonial-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .testimonial-photo-placeholder {
+            width: 100%;
+            margin-top: 14px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #F5F5F5;
+            border: 1px dashed #FFB3D9;
+        }
+
+        .testimonial-photo-placeholder img {
+            width: 100%;
+            height: 259px;
+            object-fit: cover;
+            display: block;
+            border-radius: 10px;
+            filter: none;
+        }
+
+        .testimonial-photo-placeholder .photo-label {
+            text-align: center;
+            font-size: 11px;
+            color: #E91E8C;
+            padding: 6px 0 8px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        /* ========== SEÇÃO 7 — OFERTA ========== */
+        .offer-section {
+            padding: 50px 20px;
+        }
+
+        .offer-box {
+            background: #FFF0F7;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .offer-tag {
+            display: inline-block;
+            background: #22C55E;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .price-old {
+            font-size: 18px;
+            color: #999;
+            text-decoration: line-through;
+            margin-bottom: 6px;
+        }
+
+        .price-new {
+            font-family: 'Poppins', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            color: #E91E8C;
+            margin-bottom: 6px;
+        }
+
+        .price-sub {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .arrow-down {
+            font-size: 28px;
+            margin-bottom: 16px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #22C55E;
+            color: #FFFFFF;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease, transform 0.2s ease;
+            animation: pulse 2.5s infinite;
+            box-shadow: 0 6px 24px rgba(34, 197, 94, 0.35);
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .cta-btn:hover {
+            background: #16A34A;
+            transform: scale(1.02);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 6px 24px rgba(34, 197, 94, 0.35); }
+            50% { box-shadow: 0 6px 36px rgba(34, 197, 94, 0.55); }
+            100% { box-shadow: 0 6px 24px rgba(34, 197, 94, 0.35); }
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            font-size: 13px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ========== SEÇÃO 8 — COMPARAÇÃO ========== */
+        .comparison-section {
+            padding: 50px 20px;
+        }
+
+        .comparison-section h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #1A1A1A;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .comparison-card {
+            padding: 28px 24px;
+            border-radius: 14px;
+        }
+
+        .comparison-card.negative {
+            background: #F5F5F5;
+            border: 1px solid #E0E0E0;
+        }
+
+        .comparison-card.positive {
+            background: #FFF0F7;
+            border: 2px solid #E91E8C;
+        }
+
+        .comparison-card .card-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .comparison-card h3 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            color: #1A1A1A;
+        }
+
+        .comparison-card ul {
+            list-style: none;
+        }
+
+        .comparison-card li {
+            font-size: 14px;
+            padding: 6px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            line-height: 1.5;
+        }
+
+        .comparison-card.negative li {
+            color: #666;
+        }
+
+        .comparison-card.positive li {
+            color: #1A1A1A;
+        }
+
+        /* ========== SEÇÃO 9 — GARANTIA ========== */
+        .guarantee-section {
+            padding: 50px 20px;
+        }
+
+        .guarantee-box {
+            max-width: 650px;
+            margin: 0 auto;
+            border: 2px dashed #E91E8C;
+            border-radius: 16px;
+            padding: 36px 30px;
+            text-align: center;
+        }
+
+        .guarantee-box .icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+        }
+
+        .guarantee-box h2 {
+            font-size: 22px;
+            color: #1A1A1A;
+            margin-bottom: 14px;
+        }
+
+        .guarantee-box p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.7;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+
+        /* ========== SEÇÃO 10 — FAQ ========== */
+        .faq-section {
+            padding: 50px 20px;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #1A1A1A;
+        }
+
+        .faq-list {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border: 1px solid #F0F0F0;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 2px 10px rgba(233, 30, 140, 0.08);
+        }
+
+        .faq-question {
+            padding: 18px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 15px;
+            color: #1A1A1A;
+            background: #FAFAFA;
+            transition: background 0.2s ease;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            background: #FFF0F7;
+        }
+
+        .faq-question .faq-toggle {
+            font-size: 20px;
+            color: #E91E8C;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .faq-item.open .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding: 0 20px 18px;
+        }
+
+        .faq-answer p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.7;
+            padding-top: 4px;
+        }
+
+        /* ========== SEÇÃO 11 — CTA FINAL ========== */
+        .final-cta-section {
+            padding: 50px 20px;
+            text-align: center;
+            background: #FFF0F7;
+        }
+
+        .final-cta-section h2 {
+            font-size: 24px;
+            color: #1A1A1A;
+            margin-bottom: 12px;
+        }
+
+        .final-cta-section .subtitle {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 28px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta-section .cta-sub {
+            font-size: 13px;
+            color: #777;
+            margin-top: 14px;
+        }
+
+        /* ========== RODAPÉ DE RECUSA ========== */
+        .decline-footer {
+            padding: 30px 20px 50px;
+            text-align: center;
+        }
+
+        .decline-link {
+            font-size: 13px;
+            color: #999;
+            text-decoration: underline;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            transition: color 0.2s ease;
+        }
+
+        .decline-link:hover {
+            color: #777;
+        }
+
+        /* ========== RESPONSIVO ========== */
+        @media (max-width: 768px) {
+            .hero-grid {
+                flex-direction: column;
+                gap: 28px;
+            }
+
+            .hero-mockup {
+                flex: none;
+                width: 100%;
+                max-width: 320px;
+                height: auto;
+                margin: 0 auto;
+                font-size: 20px;
+                padding: 0;
+                background: none;
+                box-shadow: none;
+                overflow: visible;
+            }
+
+            .hero-mockup img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+                border-radius: 16px;
+            }
+
+            .headline-section h1 {
+                font-size: 24px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-new {
+                font-size: 40px;
+            }
+
+            .timer-display {
+                font-size: 42px;
+            }
+
+            .cta-btn {
+                font-size: 16px;
+                padding: 16px 28px;
+            }
+
+            .offer-box {
+                padding: 30px 20px;
+            }
+
+            .guarantee-box {
+                padding: 28px 20px;
+            }
+
+            .trust-badges {
+                gap: 14px;
+            }
+
+            .pattern-interrupt h2 {
+                font-size: 22px;
+            }
+
+            .final-cta-section h2 {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .headline-section h1 {
+                font-size: 21px;
+            }
+
+            .price-new {
+                font-size: 34px;
+            }
+
+            .timer-display {
+                font-size: 36px;
+            }
+        }
+    </style>
+    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+    <script
+      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+      data-utmify-prevent-subids
+      async
+      defer
+    ></script>
+    <script>
+      window.pixelId = "6a068d18bb2d5d35af412e9f";
+      var a = document.createElement("script");
+      a.setAttribute("async", "");
+      a.setAttribute("defer", "");
+      a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+      document.head.appendChild(a);
+    </script>
+    <script>
+      // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
+      const link = 'https://metodosecretogluteosbrasilenos.site/pv/dws1';
+
+      function setBackRedirect(url) {
+        let urlBackRedirect = url;
+        urlBackRedirect = urlBackRedirect =
+          urlBackRedirect.trim() +
+          (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+          document.location.search.replace('?', '').toString();
+
+        history.pushState({}, '', location.href);
+        history.pushState({}, '', location.href);
+        history.pushState({}, '', location.href);
+
+        window.addEventListener('popstate', () => {
+          console.log('onpopstate', urlBackRedirect);
+          setTimeout(() => {
+            location.href = urlBackRedirect;
+          }, 1);
+        });
+      }
+
+      setBackRedirect(link);
+    </script>
+</head>
+<body>
+
+    <!-- ========== SEÇÃO 1 — BARRA DE PROGRESSO ========== -->
+    <div class="progress-bar-section">
+        <div class="progress-text">Paso 1 de 2 — Completa tu transformación</div>
+        <div class="progress-track-wrapper">
+            <div class="progress-percent-label">82%</div>
+            <div class="progress-track">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SEÇÃO 2 — PATTERN INTERRUPT ========== -->
+    <section class="pattern-interrupt">
+        <div class="container">
+            <div class="icon">🎉</div>
+            <h2>¡Tu protocolo está listo!</h2>
+            <p>Pero espera — antes de irte, tenemos un mensaje importante para ti...</p>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO 3 — HEADLINE PRINCIPAL ========== -->
+    <section class="headline-section">
+        <div class="container">
+            <div class="tag-pill">OFERTA EXCLUSIVA — SOLO PARA NUEVAS ALUMNAS</div>
+            <h1>Tienes el entrenamiento perfecto. Ahora aprovecha para tener una alimentación personalizada y obtén resultados 3x más rápido!</h1>
+            <p class="subtitle">El 90% de las mujeres entrenan bien, pero comen mal para el glúteo — y por eso los resultados tardan. Este plan alimenticio personalizado resuelve ese problema para ti.</p>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO 4 — HERO + PRODUTO ========== -->
+    <section class="hero-product">
+        <div class="hero-grid container">
+            <div class="hero-mockup">
+                <img src="https://i.postimg.cc/9XrNFNKc/Chat-GPT-Image-15-de-abr-de-2026-13-49-30.png" alt="Plano nutrición Brasileño" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+            </div>
+            <div class="hero-features">
+                <ul>
+                    <li><span class="emoji">📅</span> Menú completo día a día por 28 días</li>
+                    <li><span class="emoji">🛒</span> Lista de compras semanal (fácil y sin complicaciones)</li>
+                    <li><span class="emoji">🍑</span> Protocolo de comidas activadoras del glúteo</li>
+                    <li><span class="emoji">⚡</span> Combinación exacta con tu plan de entrenamiento</li>
+                    <li><span class="emoji">📱</span> Acceso inmediato desde el celular — de por vida</li>
+                    <li><span class="emoji">🚫</span> Sin dieta restrictiva ni alimentos exóticos</li>
+                    <li><span class="emoji">✅</span> 100% creada por el coach Nunzi y personalizada para ti</li>
+                </ul>
+                <div style="margin-top:20px;text-align:center;">
+                    <div class="price-old">De $197,00</div>
+                    <div class="price-new">Por solo $17,00</div>
+                    <div class="price-sub">Menos de $1,00 al día para potenciar tus resultados</div>
+                    <!-- HOTMART - Sales Funnel Widget -->
+                    <div id="hotmart-sales-funnel-3"></div>
+                    <!-- HOTMART - Sales Funnel Widget -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO 5 — TIMER ========== -->
+    <section class="timer-section">
+        <div class="container">
+            <div class="timer-label">⏳ Esta oferta expira en:</div>
+            <div class="timer-display" id="countdown">10:00</div>
+            <div class="timer-sub">Esta página desaparecerá cuando se acabe el tiempo. No la cierres.</div>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO 6 — DEPOIMENTOS ========== -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>Lo que pasa cuando entrenamiento + alimentación trabajan juntos:</h2>
+            <div class="testimonials-grid">
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-header">
+                        <img class="avatar" src="https://img.freepik.com/fotos-gratis/a-bela-rapariga-esta-no-parque_8353-5084.jpg?semt=ais_hybrid&w=740&q=80" alt="Camila R." style="object-fit:cover;">
+                        <div class="testimonial-name">Camila R. — Ciudad de México, CDMX</div>
+                    </div>
+                    <p class="testimonial-text">"Seguí el plan de entrenamiento por 2 semanas y vi poca diferencia. Cuando agregué el plan alimenticio, en la tercera semana mis glúteos finalmente empezaron a crecer de verdad. La combinación es increíble."</p>
+                    <div class="testimonial-photo-placeholder">
+                        <img src="https://i.postimg.cc/Y0np3mp4/2-(1).webp" alt="Foto resultado Camila" style="object-position: center center;">
+                        <div class="photo-label">📸 Foto enviada por la alumna</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-header">
+                        <img class="avatar" src="https://i.pinimg.com/736x/c2/c8/ca/c2c8ca1f45def25335ebba5b0f530bd1.jpg" alt="Fernanda M." style="object-fit:cover;">
+                        <div class="testimonial-name">Fernanda M. — Guadalajara, JAL</div>
+                    </div>
+                    <p class="testimonial-text">"Pensé que solo era cuestión de entrenar más. Pero cuando entendí qué comer y cuándo comer para el glúteo, los resultados llegaron mucho más rápido. En 28 días quedé impactada con el espejo."</p>
+                    <div class="testimonial-photo-placeholder">
+                        <img src="https://i.postimg.cc/pXJQ2WsG/4.webp" alt="Foto resultado Fernanda" style="object-position: center center;">
+                        <div class="photo-label">📸 Foto enviada por la alumna</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <div class="testimonial-header">
+                        <img class="avatar" src="https://forbes.com.br/wp-content/uploads/2023/12/mulher-lidiane-jones-bumble.jpg" alt="Juliana S." style="object-fit:cover;">
+                        <div class="testimonial-name">Juliana S. — Monterrey, NL</div>
+                    </div>
+                    <p class="testimonial-text">"El plan alimenticio me enseñó a comer para crecer, no para adelgazar. Eso lo cambió todo. Nunca hice dieta y aun así pude seguirlo. Super sencillo y práctico."</p>
+                    <div class="testimonial-photo-placeholder">
+                        <img src="https://i.postimg.cc/Hnpx3gXR/8-(1).webp" alt="Foto resultado Juliana" style="object-position: center center;">
+                        <div class="photo-label">📸 Foto enviada por la alumna</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO 7 — OFERTA ========== -->
+    <section class="offer-section" id="oferta">
+        <div class="offer-box">
+            <div class="offer-tag">PRECIO ESPECIAL — SOLO HOY</div>
+            <div class="price-old">De $197,00</div>
+            <div class="price-new">Por solo $17,00</div>
+            <div class="price-sub">Menos de $1,00 al día para potenciar tus resultados</div>
+            <div class="arrow-down">👇</div>
+            <!-- HOTMART - Sales Funnel Widget -->
+            <div id="hotmart-sales-funnel"></div>
+            <!-- HOTMART - Sales Funnel Widget -->
+            <div class="trust-badges">
+                <span class="trust-badge">🔒 Pago 100% Seguro</span>
+                <span class="trust-badge">⚡ Acceso Inmediato</span>
+                <span class="trust-badge">🛡️ Garantía de 45 Días</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO 8 — COMPARAÇÃO ========== -->
+    <section class="comparison-section">
+        <div class="container">
+            <h2>¿Por qué el plan alimenticio hace tanta diferencia?</h2>
+            <div class="comparison-grid">
+
+                <div class="comparison-card negative">
+                    <div class="card-icon">❌</div>
+                    <h3>SIN el plan alimenticio</h3>
+                    <ul>
+                        <li><span>❌</span> Entrenas, pero los glúteos no crecen al ritmo esperado</li>
+                        <li><span>❌</span> Tu metabolismo trabaja en tu contra sin que lo sepas</li>
+                        <li><span>❌</span> Los resultados tardan el doble en aparecer</li>
+                        <li><span>❌</span> No sabes qué comer antes ni después del entrenamiento</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card positive">
+                    <div class="card-icon">✅</div>
+                    <h3>CON el plan alimenticio</h3>
+                    <ul>
+                        <li><span>✅</span> Alimentación programada para activar el crecimiento del glúteo</li>
+                        <li><span>✅</span> Cada comida refuerza el trabajo de tu entrenamiento</li>
+                        <li><span>✅</span> Resultados visibles hasta 3x más rápido</li>
+                        <li><span>✅</span> Sin adivinanzas — menú listo, día a día</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO 9 — GARANTIA ========== -->
+    <section class="guarantee-section">
+        <div class="guarantee-box">
+            <div class="icon">🛡️</div>
+            <h2>Garantía Incondicional de 45 Días</h2>
+            <p>Si sigues el plan y no quedas satisfecha con los resultados, te devolvemos el 100% de tu inversión. Sin burocracia, sin preguntas. No tienes nada que perder — solo glúteos que ganar.</p>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO 10 — FAQ ========== -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Necesito hacer una dieta restrictiva para seguir el plan?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No. El plan fue creado para ser práctico y realista. Sin alimentos exóticos, sin eliminar grupos alimenticios completos. Son elecciones estratégicas que potencian el crecimiento del glúteo sin sacrificios.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Funciona junto con el plan de entrenamiento que acabo de comprar?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Exactamente para eso fue creado. Los dos fueron diseñados para trabajar juntos — el entrenamiento activa el glúteo, la alimentación le da el combustible y los nutrientes para que crezca más rápido.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Cómo voy a recibir el plan alimenticio?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Inmediatamente después de confirmar el pago, tendrás acceso digital completo. Puedes acceder desde tu celular, tablet o computadora, cuando y donde quieras.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Cuánto tiempo voy a tardar en ver diferencia con los dos planes juntos?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>La mayoría de las alumnas reportan notar diferencia desde la segunda semana cuando combinan entrenamiento + alimentación. El protocolo completo de 28 días es donde ocurre la transformación más visible.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        ¿Y si no me gusta o no funciona para mí?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tienes 45 días de garantía total. Si no estás satisfecha por cualquier motivo, solo contáctanos y te devolvemos el 100% del valor. Así de simple.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SEÇÃO 11 — CTA FINAL ========== -->
+    <section class="final-cta-section">
+        <div class="container">
+            <h2>⏰ Recuerda: esta oferta desaparece cuando cierres esta página</h2>
+            <p class="subtitle">Ya diste el primer paso con el plan de entrenamiento. No dejes que la alimentación sabotee tus resultados.</p>
+            <!-- HOTMART - Sales Funnel Widget -->
+            <div id="hotmart-sales-funnel-2"></div>
+            <!-- HOTMART - Sales Funnel Widget -->
+            <div class="cta-sub">Pago único &bull; Acceso de por vida &bull; Garantía de 45 días</div>
+        </div>
+    </section>
+
+
+    <script>
+        // ========== CONTADOR REGRESSIVO ==========
+        (function() {
+            var totalSeconds = 8 * 60;
+            var display = document.getElementById('countdown');
+            var timerSection = display.parentElement;
+
+            var interval = setInterval(function() {
+                totalSeconds--;
+                if (totalSeconds <= 0) {
+                    clearInterval(interval);
+                    display.textContent = '00:00';
+                    setTimeout(function() {
+                        display.classList.add('timer-expired');
+                        display.textContent = 'Oferta cerrada';
+                        var sub = timerSection.querySelector('.timer-sub');
+                        if (sub) sub.style.display = 'none';
+                        var label = timerSection.querySelector('.timer-label');
+                        if (label) label.style.display = 'none';
+                    }, 500);
+                    return;
+                }
+
+                var m = Math.floor(totalSeconds / 60);
+                var s = totalSeconds % 60;
+                display.textContent =
+                    (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+            }, 1000);
+        })();
+
+        // ========== FAQ ACORDEÃO ==========
+        (function() {
+            var items = document.querySelectorAll('.faq-item');
+            items.forEach(function(item) {
+                var question = item.querySelector('.faq-question');
+                question.addEventListener('click', function() {
+                    var isOpen = item.classList.contains('open');
+
+                    // Fecha todos
+                    items.forEach(function(other) {
+                        other.classList.remove('open');
+                    });
+
+                    // Abre o clicado (se não estava aberto)
+                    if (!isOpen) {
+                        item.classList.add('open');
+                    }
+                });
+            });
+        })();
+
+        // ========== BOTÃO DE RECUSA ==========
+        document.getElementById('declineBtn').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ========== HOTMART WIDGETS ==========
+        window.addEventListener('load', function() {
+            if (typeof checkoutElements !== 'undefined') {
+                checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
+                checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel-2');
+                checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel-3');
+            }
+        });
+    </script>
+
+</body>
+</html>
