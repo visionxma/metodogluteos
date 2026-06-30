@@ -531,7 +531,7 @@
     </section>
 
     <!-- SEÇÃO 3 — OFERTA -->
-    <section class="offer">
+    <section class="offer" id="oferta">
         <div class="container">
             <div class="offer-card fade-in">
                 <span class="pill">🔥 82% OFF — ÚLTIMA OPORTUNIDAD</span>
@@ -552,13 +552,17 @@
 
                 <div class="pricing">
                     <span class="price-old">Precio normal: $27,00</span>
-                    <span class="price-new">Hoy solo: $4,90</span>
+                    <span class="price-new">Hoy solo: $5,90</span>
                     <span class="price-sub">Menos de $0,17 por día con el coach a tu lado</span>
                 </div>
 
                 <span class="arrow-down">👇</span>
 
-                <div id="hotmart-sales-funnel"></div>
+                <!-- KIWIFY - Upsell 1-clic -->
+                <div style="text-align:center" id="kiwify-upsell-ijAvZhn" data-upsell-url="" data-downsell-url="">
+                    <button id="kiwify-upsell-trigger-ijAvZhn" style="background-color:#2ECC70;padding:14px 28px;cursor:pointer;color:#FFFFFF;font-weight:600;border-radius:4px;border:1px solid #2ECC70;font-size:20px;">✅ ¡Sí, acepto esta oferta especial! 🎁🔥</button>
+                    <div id="kiwify-upsell-cancel-trigger-ijAvZhn" style="margin-top:1rem;cursor:pointer;font-size:16px;text-decoration:underline;font-family:sans-serif;">No, prefiero continuar sin esta oferta.</div>
+                </div>
 
                 <div class="trust-badges">
                     <span>🔒 Pago 100% Seguro</span>
@@ -597,18 +601,14 @@
     <section class="final-cta">
         <div class="container fade-in">
             <p class="guarantee-line">🛡️ Garantía total de 45 días — si no te gusta, te devolvemos el 100%. Sin preguntas.</p>
-            <div id="hotmart-sales-funnel-2"></div>
+            <a href="#oferta" style="display:inline-block;background-color:#2ECC70;padding:14px 28px;cursor:pointer;color:#FFFFFF;font-weight:600;border-radius:4px;border:1px solid #2ECC70;font-size:20px;text-decoration:none;">✅ ¡Sí, acepto esta oferta especial! 🎁🔥</a>
             <p class="sub-text">Pago único • Acceso de por vida • Garantía de 45 días</p>
         </div>
     </section>
 
 
-    <!-- HOTMART - Sales Funnel Widget -->
-    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
-    <script>
-        checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
-        checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel-2');
-    </script>
+    <!-- KIWIFY - Script del upsell 1-clic -->
+    <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
 
     <script>
         // Countdown Timer — 5 minutos
