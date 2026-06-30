@@ -797,7 +797,7 @@
             }
         }
     </style>
-    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+    <!-- checkout migrado para Kiwify (script no final do body) -->
     <script
       src="https://cdn.utmify.com.br/scripts/utms/latest.js"
       data-utmify-prevent-subids
@@ -814,7 +814,7 @@
     </script>
     <script>
       // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
-      const link = 'https://metodosecretogluteosbrasilenos.site/pv/dws1';
+      const link = 'https://elsecretodeltraserosexy.site/pv/dws1';
 
       function setBackRedirect(url) {
         let urlBackRedirect = url;
@@ -889,9 +889,7 @@
                     <div class="price-old">De $197,00</div>
                     <div class="price-new">Por solo $17,00</div>
                     <div class="price-sub">Menos de $1,00 al día para potenciar tus resultados</div>
-                    <!-- HOTMART - Sales Funnel Widget -->
-                    <div id="hotmart-sales-funnel-3"></div>
-                    <!-- HOTMART - Sales Funnel Widget -->
+                    <a href="#oferta" style="display:inline-block;background-color:#2ECC70;padding:14px 28px;color:#FFFFFF;font-weight:600;border-radius:4px;border:1px solid #2ECC70;font-size:20px;text-decoration:none;">✅ ¡Sí, quiero esta oferta!</a>
                 </div>
             </div>
         </div>
@@ -963,9 +961,12 @@
             <div class="price-new">Por solo $17,00</div>
             <div class="price-sub">Menos de $1,00 al día para potenciar tus resultados</div>
             <div class="arrow-down">👇</div>
-            <!-- HOTMART - Sales Funnel Widget -->
-            <div id="hotmart-sales-funnel"></div>
-            <!-- HOTMART - Sales Funnel Widget -->
+            <!-- KIWIFY - Upsell 1-clique -->
+            <div style="text-align:center" id="kiwify-upsell-Nbtf7eI" data-upsell-url="https://elsecretodeltraserosexy.site/pv/ups2/" data-downsell-url="https://elsecretodeltraserosexy.site/pv/dws1/">
+                <button id="kiwify-upsell-trigger-Nbtf7eI" style="background-color:#2ECC70;padding:14px 28px;cursor:pointer;color:#FFFFFF;font-weight:600;border-radius:4px;border:1px solid #2ECC70;font-size:20px;">✅ ¡Sí, acepto esta oferta especial! 🎁🔥</button>
+                <div id="kiwify-upsell-cancel-trigger-Nbtf7eI" style="margin-top:1rem;cursor:pointer;font-size:16px;text-decoration:underline;font-family:sans-serif;">No, prefiero continuar sin esta oferta.</div>
+            </div>
+            <!-- KIWIFY - Upsell 1-clique -->
             <div class="trust-badges">
                 <span class="trust-badge">🔒 Pago 100% Seguro</span>
                 <span class="trust-badge">⚡ Acceso Inmediato</span>
@@ -1080,9 +1081,7 @@
         <div class="container">
             <h2>⏰ Recuerda: esta oferta desaparece cuando cierres esta página</h2>
             <p class="subtitle">Ya diste el primer paso con el plan de entrenamiento. No dejes que la alimentación sabotee tus resultados.</p>
-            <!-- HOTMART - Sales Funnel Widget -->
-            <div id="hotmart-sales-funnel-2"></div>
-            <!-- HOTMART - Sales Funnel Widget -->
+            <a href="#oferta" style="display:inline-block;background-color:#2ECC70;padding:14px 28px;color:#FFFFFF;font-weight:600;border-radius:4px;border:1px solid #2ECC70;font-size:20px;text-decoration:none;">✅ ¡Sí, quiero esta oferta!</a>
             <div class="cta-sub">Pago único &bull; Acceso de por vida &bull; Garantía de 45 días</div>
         </div>
     </section>
@@ -1139,20 +1138,10 @@
             });
         })();
 
-        // ========== BOTÃO DE RECUSA ==========
-        document.getElementById('declineBtn').addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // ========== HOTMART WIDGETS ==========
-        window.addEventListener('load', function() {
-            if (typeof checkoutElements !== 'undefined') {
-                checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
-                checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel-2');
-                checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel-3');
-            }
-        });
     </script>
+
+    <!-- KIWIFY - Script do upsell 1-clique -->
+    <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias por tu Compra! 🎉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #FFF0F7 0%, #FFFFFF 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: #f0f0f0;
+            z-index: 1000;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #E91E8C 0%, #FF6EC7 100%);
+            animation: progressLoad 1s ease-out;
+        }
+
+        @keyframes progressLoad {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, #FFF0F7 0%, #FFE5F4 100%);
+            border-radius: 20px;
+            margin-top: 20px;
+            box-shadow: 0 10px 40px rgba(233, 30, 140, 0.1);
+        }
+
+        .checkmark {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.5s ease-out;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        .checkmark svg {
+            width: 60px;
+            height: 60px;
+            stroke: white;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+            animation: checkDraw 0.5s 0.3s ease-out forwards;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes checkDraw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            color: #E91E8C;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .emoji {
+            font-size: 32px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Info Card */
+        .info-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid #FFD6EC;
+        }
+
+        .info-card h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #E91E8C;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .info-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .icon {
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: block;
+            width: 100%;
+            max-width: 480px;
+            margin: 30px auto;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2.5s infinite;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(34, 197, 94, 0.4);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
+            }
+            50% {
+                box-shadow: 0 8px 30px rgba(34, 197, 94, 0.5);
+            }
+        }
+
+        /* Support Section */
+        .support {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            border-radius: 16px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .support h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .support p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .support a {
+            color: #E91E8C;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .support a:hover {
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .info-card {
+                padding: 25px;
+            }
+
+            .info-card h2 {
+                font-size: 20px;
+            }
+
+            .cta-button {
+                font-size: 16px;
+                padding: 18px 30px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 26px;
+            }
+
+            .checkmark {
+                width: 80px;
+                height: 80px;
+            }
+
+            .checkmark svg {
+                width: 48px;
+                height: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <div class="checkmark">
+                <svg viewBox="0 0 52 52">
+                    <polyline points="14 27 22 35 38 19"/>
+                </svg>
+            </div>
+            <h1>¡Gracias por tu Compra! <span class="emoji">🎉</span></h1>
+            <p class="subtitle">Tu pedido ha sido confirmado exitosamente</p>
+        </div>
+
+        <!-- Order Info -->
+        <div class="info-card">
+            <h2><span class="icon">📦</span> ¿Qué sigue ahora?</h2>
+            <ul class="info-list">
+                <li>
+                    <span class="icon">✅</span>
+                    <span><strong>Confirmación enviada:</strong> Recibirás un email con todos los detalles de tu compra en los próximos minutos.</span>
+                </li>
+                <li>
+                    <span class="icon">🔐</span>
+                    <span><strong>Acceso inmediato:</strong> Si compraste un producto digital, ya tienes acceso a tu área de miembros.</span>
+                </li>
+                <li>
+                    <span class="icon">📧</span>
+                    <span><strong>Revisa tu email:</strong> No olvides verificar la carpeta de spam o promociones.</span>
+                </li>
+                <li>
+                    <span class="icon">💳</span>
+                    <span><strong>Pago procesado:</strong> Tu transacción fue realizada de forma segura.</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- CTA -->
+        <a href="#" class="cta-button">
+            ACCEDER A MI ÁREA DE MIEMBROS →
+        </a>
+
+        <!-- Support Section -->
+        <div class="support">
+            <h3>¿Necesitas ayuda? 💬</h3>
+            <p>Nuestro equipo está disponible para ayudarte</p>
+            <p>
+                Email: <a href="mailto:soporte@tudominio.com">soporte@tudominio.com</a>
+            </p>
+            <p style="margin-top: 20px; font-size: 14px; color: #999;">
+                Tiempo de respuesta: Menos de 24 horas
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2024 Todos los derechos reservados</p>
+            <p style="margin-top: 10px;">
+                <a href="#" style="color: #E91E8C; text-decoration: none; margin: 0 10px;">Política de Privacidad</a> |
+                <a href="#" style="color: #E91E8C; text-decoration: none; margin: 0 10px;">Términos de Uso</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Optional: Add any tracking pixels or conversion scripts here
+        console.log('Thank you page loaded');
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
