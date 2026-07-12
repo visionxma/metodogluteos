@@ -1144,6 +1144,16 @@
 
     </script>
 
+    <script>
+        // CTA: desplaza hasta la oferta sin cambiar el hash (evita disparar el back-redirect)
+        document.querySelectorAll('a[href="#oferta"]').forEach(function (a) {
+            a.addEventListener('click', function (e) {
+                e.preventDefault();
+                var offer = document.getElementById('oferta');
+                if (offer) offer.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 
 </body>
 </html>
