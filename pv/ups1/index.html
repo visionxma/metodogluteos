@@ -797,7 +797,7 @@
             }
         }
     </style>
-    <!-- checkout migrado para Kiwify (script no final do body) -->
+    <!-- checkout via Hotmart Sales Funnel Widget (na seção de oferta) -->
     <script
       src="https://cdn.utmify.com.br/scripts/utms/latest.js"
       data-utmify-prevent-subids
@@ -961,12 +961,13 @@
             <div class="price-new">Por solo $17,00</div>
             <div class="price-sub">Menos de $1,00 al día para potenciar tus resultados</div>
             <div class="arrow-down">👇</div>
-            <!-- KIWIFY - Upsell 1-clique -->
-            <div style="text-align:center" id="kiwify-upsell-Nbtf7eI" data-upsell-url="https://elsecretodeltraserosexy.site/pv/ups2/" data-downsell-url="https://elsecretodeltraserosexy.site/pv/dws1/">
-                <button id="kiwify-upsell-trigger-Nbtf7eI" style="background-color:#2ECC70;padding:14px 28px;cursor:pointer;color:#FFFFFF;font-weight:600;border-radius:4px;border:1px solid #2ECC70;font-size:20px;">✅ ¡Sí, acepto esta oferta especial! 🎁🔥</button>
-                <div id="kiwify-upsell-cancel-trigger-Nbtf7eI" style="margin-top:1rem;cursor:pointer;font-size:16px;text-decoration:underline;font-family:sans-serif;">No, prefiero continuar sin esta oferta.</div>
-            </div>
-            <!-- KIWIFY - Upsell 1-clique -->
+            <!-- HOTMART - Sales Funnel Widget -->
+            <div id="hotmart-sales-funnel"></div>
+            <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+            <script>
+            checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+            </script>
+            <!-- HOTMART - Sales Funnel Widget -->
             <div class="trust-badges">
                 <span class="trust-badge">🔒 Pago 100% Seguro</span>
                 <span class="trust-badge">⚡ Acceso Inmediato</span>
@@ -1140,8 +1141,6 @@
 
     </script>
 
-    <!-- KIWIFY - Script do upsell 1-clique -->
-    <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
 
 </body>
 </html>
