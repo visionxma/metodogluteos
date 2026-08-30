@@ -680,5 +680,25 @@
         });
     </script>
 
+    <script>
+        // ===== MODO DE PRUEBA LOCAL — solo en localhost, invisible en produccion =====
+        (function () {
+            var h = location.hostname;
+            if (h !== 'localhost' && h !== '127.0.0.1') return;
+            var buttons = [
+                { label: '✅ Aceptar → gracias', url: '../../gracias/', color: '#22C55E' },
+                { label: '❌ Rechazar → gracias', url: '../../gracias/', color: '#EF4444' }
+            ];
+            var bar = document.createElement('div');
+            bar.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:2147483647;background:#111;color:#fff;padding:10px 14px;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;font-family:sans-serif;font-size:14px;box-shadow:0 -2px 12px rgba(0,0,0,.4)';
+            var html = '<strong style="color:#FFD54F">🧪 MODO PRUEBA</strong><span style="opacity:.75">simula el funil (no es pago real)</span>';
+            buttons.forEach(function (b) {
+                html += '<a href="' + b.url + '" style="background:' + b.color + ';color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none;font-weight:700">' + b.label + '</a>';
+            });
+            bar.innerHTML = html;
+            document.body.appendChild(bar);
+        })();
+    </script>
+
 </body>
 </html>
